@@ -1,82 +1,105 @@
-#include <stdio.h>
-#include <unistd.h>
-#include <stdlib.h>
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   parsing.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: iboutadg <iboutadg@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/02/03 21:08:16 by iboutadg          #+#    #+#             */
+/*   Updated: 2024/02/04 01:23:27 by iboutadg         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
-int error(void *arr)
+#include "push_swap.h"
+
+int error()
 {
 	write(2, "Error\n", 6);
-	if (arr)
-		free(arr);
 	return (1);
 }
 
-int	ft_atoi(const char *str, int *err)
+void	my_exit(int exit_code)
+{
+	free_all();
+	exit(exit_code);
+}
+
+int	ft_atoi(const char *str, int index, t_stack	**stack)
 {
 	size_t	i;
 	long	result;
 	int		sign;
 
-	i = 0;
+	i = index;
 	sign = 1;
 	result = 0;
+	while (str[i] == ' ' || (str[i] >= 9 && str[i] <= 13))
+		i++;
+	if (!str[i])
+		return (i);
 	if ('+' == str[i] || '-' == str[i])
 		if ('-' == str[i++])
 			sign = -1;
 	if (!str[i])
-		*err = 1;
+		exit(error());
 	while (str[i] >= '0' && str[i] <= '9')
 	{
 		result = result * 10 + str[i++] - '0';
 		if ((result > 2147483647 && sign == 1) || (result > 2147483648 && sign == -1))
-			*err = 1;
+			my_exit(error());
 	}
-	if (str[i])
-		*err = 1;
-	return ((int )(sign * result));
+	if (!in_str(str[i], " \t\n\v\f\r") && str[i])
+		my_exit(error());
+	return (push(stack, (void *)(result * sign)), i);
 }
 
-int *parse(int ac, char **av)
+t_stack	*parse(char *str)
 {
 	int i;
-	int j;
-	int *arr;
-	int err;
+	t_stack	*stack;
 
-	arr = malloc((ac - 1) * sizeof(int));
-	if (!arr)
-		exit(error(0));
-	i = 1;
-	err = 0;
+	i = 0;
+	stack = NULL;
+	while (str[i])
+	{
+		i = ft_atoi(str, i, &stack);
+	}
+	return (stack);
+}
+
+char	*get_one_big_str(int ac, char **av)
+{
+	int		i = 1;
+	char	*res;
+
+	res = NULL;
 	while (i < ac)
 	{
-		arr[i - 1] = ft_atoi(av[i], &err);
-		j = 0;
-		while (j < i - 1)
-		{
-			if (arr[i - 1] == arr[j++])
-				exit(error(arr));
-		}
-		if (err)
-			exit(error(arr));
-		i++;
+		res = ft_strjoin(res, av[i++]);
+			if (!res)
+				return (0);
+		res = ft_strjoin(res, " ");
+			if (!res)
+				return (0);
 	}
-	return (arr);
+	return (res);
 }
 
-int main(int ac, char **argv)
+int main(int ac, char **av)
 {
-	int *arr;
-	int i;
+	t_stack	*stack_a;
+	char *str;
 
-	arr = NULL;
+	stack_a = NULL;
 	if (ac > 1)
 	{
-		arr = parse(ac, argv);
-		i = 0;
-		while (i < ac - 1)
-			printf("%d->", arr[i++]);
-		printf("\n");
+		str = get_one_big_str(ac, av);
+		if (!str)
+			return (0);
+		stack_a = parse(str);
+		my_free(str);
+		print_stack(stack_a);
 	}
-	free(arr);
+	my_free(stack_a);
 	return (0);
 }
