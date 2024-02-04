@@ -6,16 +6,16 @@
 /*   By: iboutadg <iboutadg@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/03 21:08:19 by iboutadg          #+#    #+#             */
-/*   Updated: 2024/02/04 01:08:29 by iboutadg         ###   ########.fr       */
+/*   Updated: 2024/02/04 02:57:08 by iboutadg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
+t_stack	*create_node(void *data)
+{
+	t_stack	*new_node;
 
-t_stack *create_node(void	*data) {
-	t_stack *new_node;
-	
 	new_node = (t_stack *)my_malloc(sizeof(t_stack));
 	if (!new_node)
 		return (NULL);
@@ -24,8 +24,9 @@ t_stack *create_node(void	*data) {
 	return (new_node);
 }
 
-t_stack	*push(t_stack **stack, void	*data){
-	t_stack *new_node;
+t_stack	*push(t_stack **stack, void *data)
+{
+	t_stack	*new_node;
 
 	new_node = create_node(data);
 	new_node->next = *stack;
@@ -33,12 +34,13 @@ t_stack	*push(t_stack **stack, void	*data){
 	return (*stack);
 }
 
-void	*pop(t_stack **stack){
-	t_stack *tmp;
+void	*pop(t_stack **stack)
+{
+	t_stack	*tmp;
 	void	*data;
 
 	if (*stack == NULL)
-		return NULL;
+		return (NULL);
 	tmp = *stack;
 	*stack = (*stack)->next;
 	tmp->next = NULL;
@@ -47,8 +49,10 @@ void	*pop(t_stack **stack){
 	return (data);
 }
 
-void	print_stack(t_stack *stack){////////////////////////////////////////////////
-	while (stack){
+void	print_stack(t_stack *stack)//////////////////////////////////////////////////////////
+{
+	while (stack)
+	{
 		printf("%ld\n", (long)stack->data);
 		stack = stack->next;
 	}

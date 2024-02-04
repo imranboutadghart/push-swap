@@ -6,7 +6,7 @@
 /*   By: iboutadg <iboutadg@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/03 23:36:15 by iboutadg          #+#    #+#             */
-/*   Updated: 2024/02/04 01:17:43 by iboutadg         ###   ########.fr       */
+/*   Updated: 2024/02/04 02:43:12 by iboutadg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,8 +46,7 @@ char	*ft_strjoin(char *s1, const char *s2)
 	char	*dst;
 
 	if (!s1)
-		return (ft_strdup(s2));;
-
+		return (ft_strdup(s2));
 	i = ft_strlen(s1);
 	j = ft_strlen(s2);
 	dst = (char *)my_malloc((i + j + 1) * sizeof(char));
@@ -64,7 +63,7 @@ char	*ft_strjoin(char *s1, const char *s2)
 	return (dst);
 }
 
-int in_str(char	c, char *str)
+int	in_str(char c, char *str)
 {
 	int	i;
 

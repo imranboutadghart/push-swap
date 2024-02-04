@@ -6,7 +6,7 @@
 /*   By: iboutadg <iboutadg@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/03 21:13:10 by iboutadg          #+#    #+#             */
-/*   Updated: 2024/02/04 02:34:28 by iboutadg         ###   ########.fr       */
+/*   Updated: 2024/02/04 02:48:20 by iboutadg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,7 @@ void	push_to_stack(t_stack **stack, void *data)
 	new_node->next = *stack;
 	*stack = new_node;
 }
+
 void	*my_malloc(size_t size)
 {
 	void	*ptr;

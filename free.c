@@ -6,7 +6,7 @@
 /*   By: iboutadg <iboutadg@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/04 02:33:56 by iboutadg          #+#    #+#             */
-/*   Updated: 2024/02/04 02:34:37 by iboutadg         ###   ########.fr       */
+/*   Updated: 2024/02/04 02:41:38 by iboutadg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	my_free(void *ptr)
 	t_stack	**my_memory;
 	t_stack	*tmp1;
 	t_stack	*tmp2;
-	
+
 	my_memory = get_memory();
 	if (!ptr || !*my_memory)
 		return ;
@@ -42,7 +42,7 @@ void	my_free(void *ptr)
 	}
 }
 
-void	free_all()
+void	free_all(void)
 {
 	t_stack	**my_memory;
 	t_stack	*tmp1;
