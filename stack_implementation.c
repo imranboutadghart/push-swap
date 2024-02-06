@@ -6,7 +6,7 @@
 /*   By: iboutadg <iboutadg@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/03 21:08:19 by iboutadg          #+#    #+#             */
-/*   Updated: 2024/02/04 02:57:08 by iboutadg         ###   ########.fr       */
+/*   Updated: 2024/02/06 17:28:38 by iboutadg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,21 @@ void	print_stack(t_stack *stack)////////////////////////////////////////////////
 {
 	while (stack)
 	{
-		printf("%ld\n", (long)stack->data);
+		printf("%ld->", (long)stack->data);
 		stack = stack->next;
 	}
+	printf("\n");
+}
+
+int	stack_size(t_stack *stack)
+{
+	int		size;
+
+	size = 0;
+	while (stack)
+	{
+		size++;
+		stack = stack->next;
+	}
+	return (size);
 }

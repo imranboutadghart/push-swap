@@ -6,13 +6,13 @@
 /*   By: iboutadg <iboutadg@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/03 21:08:16 by iboutadg          #+#    #+#             */
-/*   Updated: 2024/02/04 15:24:54 by iboutadg         ###   ########.fr       */
+/*   Updated: 2024/02/05 23:07:42 by iboutadg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	in_stack(t_stack *stack, void *data)
+static int	in_stack(t_stack *stack, void *data)
 {
 	t_stack	*tmp;
 
@@ -26,7 +26,7 @@ int	in_stack(t_stack *stack, void *data)
 	return (0);
 }
 
-int	ft_atoi(const char *str, int index, t_stack	**stack)
+static int	ft_atoi(const char *str, int index, t_stack	**stack)
 {
 	size_t	i;
 	long	res;
@@ -55,23 +55,7 @@ int	ft_atoi(const char *str, int index, t_stack	**stack)
 	return (push(stack, (void *)(res * s)), i);
 }
 
-t_stack	*parse(char *str)
-{
-	int		i;
-	t_stack	*stack;
-
-	i = 0;
-	stack = NULL;
-	while (str[i])
-	{
-		i = ft_atoi(str, i, &stack);
-		if (in_stack(stack->next, stack->data))
-			my_exit(error());
-	}
-	return (stack);
-}
-
-char	*get_one_big_str(int ac, char **av)
+static char	*get_one_big_str(int ac, char **av)
 {
 	int		i;
 	char	*res;
@@ -90,21 +74,24 @@ char	*get_one_big_str(int ac, char **av)
 	return (res);
 }
 
-int	main(int ac, char **av)
+t_stack	*parse(int ac, char **av)
 {
-	t_stack	*stack_a;
+	int		i;
 	char	*str;
+	t_stack	*stack;
 
-	stack_a = NULL;
-	if (ac > 1)
+	i = 0;
+	stack = NULL;
+	str = get_one_big_str(ac, av);
+	if (!str)
+		return (NULL);
+	while (str[i])
 	{
-		str = get_one_big_str(ac, av);
-		if (!str)
-			return (0);
-		stack_a = parse(str);
-		my_free(str);
-		print_stack(stack_a);
+		i = ft_atoi(str, i, &stack);
+		if (in_stack(stack->next, stack->data))
+			my_exit(error());
 	}
-	my_free(stack_a);
-	return (0);
+	my_free(str);
+	return (stack);
 }
+

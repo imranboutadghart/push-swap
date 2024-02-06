@@ -6,7 +6,7 @@
 /*   By: iboutadg <iboutadg@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/03 21:08:30 by iboutadg          #+#    #+#             */
-/*   Updated: 2024/02/04 15:22:49 by iboutadg         ###   ########.fr       */
+/*   Updated: 2024/02/06 17:20:25 by iboutadg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,11 +21,17 @@ typedef struct s_stack {
 	struct s_stack	*next;
 }	t_stack;
 
+typedef struct	s_head {
+	struct s_stack	*a;
+	struct s_stack	*b;
+}	t_head;
+
 // stack_implementation
 t_stack	*create_node(void	*data);
 t_stack	*push(t_stack **stack, void	*data);
 void	*pop(t_stack **stack);
 void	print_stack(t_stack *stack);
+int		stack_size(t_stack *stack);
 
 // malloc and free implementations
 void	*my_malloc(size_t n);
@@ -39,6 +45,9 @@ char	*ft_strjoin(char *s1, const char *s2);
 int		in_str(char c, char *str);
 int		error(void);
 void	my_exit(int exit_code);
+
+//parsing
+t_stack	*parse(int ac, char **av);
 
 
 #endif
