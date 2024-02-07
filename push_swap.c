@@ -43,6 +43,7 @@ void	sort(t_head *head)
 {
 	if (!head->b && sorted(head->a))
 		return ;
+	
 	push_into_b(head);
 }
 
@@ -51,13 +52,14 @@ int	main(int ac, char **av)
 	t_head	head;
 
 	head.b = NULL;
+	head.a = NULL;
 	if (ac > 1)
 	{
 		head.a = parse(ac, av);
 		print_stack(head.a);
-		rotate_a(&head);
+		r_rotate_a(&head);// error here
 		print_stack(head.a);
 	}
-	my_free(head.a);
+	my_free(head.b);
 	return (0);
 }

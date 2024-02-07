@@ -6,7 +6,7 @@
 /*   By: iboutadg <iboutadg@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/03 21:08:30 by iboutadg          #+#    #+#             */
-/*   Updated: 2024/02/06 17:20:25 by iboutadg         ###   ########.fr       */
+/*   Updated: 2024/02/07 17:00:09 by iboutadg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 # include <stdlib.h>
 # include <unistd.h>
 # include <stdio.h>/////////////////////////////////////////////////////////////////
+#include <limits.h>
 
 typedef struct s_stack {
 	void			*data;
@@ -45,6 +46,18 @@ char	*ft_strjoin(char *s1, const char *s2);
 int		in_str(char c, char *str);
 int		error(void);
 void	my_exit(int exit_code);
+
+//instructions
+int	push_a(t_head *head);
+int	push_b(t_head *head);
+int	rotate_a(t_head *head);
+int	rotate_b(t_head *head);
+int	rotate_r(t_head *head);
+int r_rotate_a(t_head *head);
+int r_rotate_b(t_head *head);
+int r_rotate_r(t_head *head);
+int	swap_a(t_head *head);
+int	swap_b(t_head *head);
 
 //parsing
 t_stack	*parse(int ac, char **av);

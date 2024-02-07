@@ -6,7 +6,7 @@
 /*   By: iboutadg <iboutadg@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/03 21:08:19 by iboutadg          #+#    #+#             */
-/*   Updated: 2024/02/06 17:28:38 by iboutadg         ###   ########.fr       */
+/*   Updated: 2024/02/07 16:39:19 by iboutadg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,12 +51,13 @@ void	*pop(t_stack **stack)
 
 void	print_stack(t_stack *stack)//////////////////////////////////////////////////////////
 {
+	printf("-->");
 	while (stack)
 	{
-		printf("%ld->", (long)stack->data);
+		printf("%ld%s", (long)stack->data, stack->next ? "->" : "");
 		stack = stack->next;
 	}
-	printf("\n");
+	printf("|\n");
 }
 
 int	stack_size(t_stack *stack)

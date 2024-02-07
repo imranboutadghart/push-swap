@@ -1,39 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   instructions.c                                     :+:      :+:    :+:   */
+/*   instructions1.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: iboutadg <iboutadg@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/06 16:47:19 by iboutadg          #+#    #+#             */
-/*   Updated: 2024/02/06 17:36:55 by iboutadg         ###   ########.fr       */
+/*   Updated: 2024/02/07 23:05:25 by iboutadg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	push_a(t_head *head)
-{
-	write(1, "pa\n", 3);
-	push(&head->a, pop(&head->b));
-}
-
-void	push_b(t_head *head)
-{
-	write(1, "pb\n", 3);
-	push(&head->b, pop(&head->a));
-}
-
-void	rotate_a(t_head *head)
+int	rotate_a(t_head *head)
 {
 	t_stack	*tmp;
 	t_stack	*tmp2;
 
 	if (stack_size(head->a) <= 2)
-	{
-		//if (stack_size(head->a) == 1 || swap_a(head));
-		return ;
-	}
+		if (stack_size(head->a) <= 1 || swap_a(head))
+			return (1);
 	tmp = head->a;
 	head->a = head->a->next;
 	tmp->next = NULL;
@@ -44,18 +30,17 @@ void	rotate_a(t_head *head)
 	}
 	tmp2->next = tmp;
 	write(1, "ra\n", 3);
+	return (1);
 }
 
-void	rotate_b(t_head *head)
+int	rotate_b(t_head *head)
 {
 	t_stack	*tmp;
 	t_stack	*tmp2;
 
 	if (stack_size(head->b) <= 2)
-	{
-		//if (stack_size(head->a) == 1 || swap_a(head));
-		return ;
-	}
+		if (stack_size(head->b) <= 1 || swap_b(head))
+			return (1);
 	tmp = head->b;
 	head->b = head->b->next;
 	tmp->next = NULL;
@@ -66,4 +51,41 @@ void	rotate_b(t_head *head)
 	}
 	tmp2->next = tmp;
 	write(1, "rb\n", 3);
+	return (1);
+}
+
+int r_rotate_a(t_head *head)
+{
+	t_stack	*tmp;
+	
+	if (stack_size(head->a) <= 2)
+		if (stack_size(head->a) <= 1 || swap_a(head))
+			return (1);
+	tmp = head->a;
+	while(tmp->next && tmp->next->next)
+	{
+		tmp = tmp->next;
+	}
+	tmp->next->next = head->a;
+	head->a = tmp->next;
+	tmp->next = NULL;
+	return (1);
+}
+
+int r_rotate_b(t_head *head)
+{
+	t_stack	*tmp;
+	
+	if (stack_size(head->b) <= 2)
+		if (stack_size(head->b) <= 1 || swap_b(head))
+			return (1);
+	tmp = head->b;
+	while(tmp->next && tmp->next->next)
+	{
+		tmp = tmp->next;
+	}
+	tmp->next->next = head->b;
+	head->b = tmp->next;
+	tmp->next = NULL;
+	return (1);
 }
