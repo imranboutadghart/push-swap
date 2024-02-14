@@ -1,53 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   instructions2.c                                    :+:      :+:    :+:   */
+/*   instructions1.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: iboutadg <iboutadg@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/06 16:47:19 by iboutadg          #+#    #+#             */
-/*   Updated: 2024/02/07 23:05:07 by iboutadg         ###   ########.fr       */
+/*   Updated: 2024/02/07 23:05:25 by iboutadg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	push_a(t_head *head, int print)
+int	rotate_r(t_head *head, int print)
 {
 	(void)print;
-	write(1, "pa\n", 3);
-	push(&head->a, pop(&head->b));
+	rotate_a(head, 0);
+	rotate_b(head, 0);
+	write(1, "rr\n", 3);
 	return (1);
 }
 
-int	push_b(t_head *head, int print)
+int	r_rotate_r(t_head *head, int print)
 {
 	(void)print;
-	write(1, "pb\n", 3);
-	push(&head->b, pop(&head->a));
+	r_rotate_a(head, 0);
+	r_rotate_b(head, 0);
+	write(1, "rrr\n", 4);
 	return (1);
 }
 
-int	swap_a(t_head *head, int print)
+int	swap_s(t_head *head, int print)
 {
-	void	*tmp;
-	
-	tmp = head->a->data;
-	head->a->data = head->a->next->data;
-	head->a->next->data = tmp;
-	if (print)
-	write(1, "sa\n", 3);
-	return (1);
-}
-
-int	swap_b(t_head *head, int print)
-{
-	void	*tmp;
-	
-	tmp = head->b->data;
-	head->b->data = head->b->next->data;
-	head->b->next->data = tmp;
-	if (print)
-		write(1, "sb\n", 3);
+	(void)print;
+	swap_a(head, 0);
+	swap_b(head, 0);
+	write(1, "ss\n", 3);
 	return (1);
 }

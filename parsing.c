@@ -39,8 +39,7 @@ static int	ft_atoi(const char *str, int index, t_stack	**stack)
 		i++;
 	if (!str[i])
 		return (i);
-	if ('+' == str[i] || '-' == str[i])
-		if ('-' == str[i++])
+	if (('+' == str[i] || '-' == str[i]) && ('-' == str[i++]))
 			s = -1;
 	if (!str[i])
 		exit(error());
@@ -50,9 +49,10 @@ static int	ft_atoi(const char *str, int index, t_stack	**stack)
 		if ((res > 2147483647 && s == 1) || (res > 2147483648 && s == -1))
 			my_exit(error());
 	}
-	if (!in_str(str[i], " \t\n\v\f\r") && str[i])
+	if ((!in_str(str[i], " \t\n\v\f\r") && str[i])\
+				|| in_stack(*stack, (void *)(res * s)))
 		my_exit(error());
-	return (push(stack, (void *)(res * s)), i);
+	return (push_back(stack, (void *)(res * s)), i);
 }
 
 static char	*get_one_big_str(int ac, char **av)
@@ -86,11 +86,7 @@ t_stack	*parse(int ac, char **av)
 	if (!str)
 		return (NULL);
 	while (str[i])
-	{
 		i = ft_atoi(str, i, &stack);
-		if (in_stack(stack->next, stack->data))
-			my_exit(error());
-	}
 	my_free(str);
 	return (stack);
 }

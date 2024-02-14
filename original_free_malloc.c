@@ -1,27 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   mini_utils.c                                       :+:      :+:    :+:   */
+/*   free.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: iboutadg <iboutadg@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/04 15:21:49 by iboutadg          #+#    #+#             */
-/*   Updated: 2024/02/04 15:25:44 by iboutadg         ###   ########.fr       */
+/*   Created: 2024/02/04 02:33:56 by iboutadg          #+#    #+#             */
+/*   Updated: 2024/02/04 02:41:38 by iboutadg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	error(void)
+t_stack	**get_memory(void);
+
+void	my_free(void *ptr)
 {
-	write(2, "Error\n", 6);
-	return (1);
+	free(ptr);
 }
 
-int	my_exit(int exit_code)
+void	free_all(void)
 {
-	free_all();
-	exit(exit_code);
-	return (1);
+	return ;
 }
 
+void	*my_malloc(size_t size)
+{
+	return (malloc(size));
+}

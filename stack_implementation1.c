@@ -34,6 +34,24 @@ t_stack	*push(t_stack **stack, void *data)
 	return (*stack);
 }
 
+t_stack	*push_back(t_stack **stack, void *data)
+{
+	t_stack	*new_node;
+	t_stack *tmp;
+
+	new_node = create_node(data);
+	if (!*stack)
+	{
+		*stack = new_node;
+		return (*stack);
+	}
+	tmp = *stack;
+	while (tmp->next)
+		tmp = tmp->next;
+	tmp->next = new_node;
+	return (*stack);
+}
+
 void	*pop(t_stack **stack)
 {
 	t_stack	*tmp;
@@ -49,26 +67,31 @@ void	*pop(t_stack **stack)
 	return (data);
 }
 
-void	print_stack(t_stack *stack)//////////////////////////////////////////////////////////
+void	print_stack_cost(t_stack *stack)//////////////////////////////////////////////////////////
 {
 	printf("-->");
 	while (stack)
 	{
-		printf("%ld%s", (long)stack->data, stack->next ? "->" : "");
+		if (0 > (long)stack->data)
+			printf("(%ld)%s", (long)stack->cost, stack->next ? "->" : "");
+		else
+			printf("%ld%s", (long)stack->cost, stack->next ? "->" : "");
 		stack = stack->next;
 	}
 	printf("|\n");
 }
 
-int	stack_size(t_stack *stack)
+void	print_stack(t_stack *stack)//////////////////////////////////////////////////////////
 {
-	int		size;
-
-	size = 0;
+	printf("-->");
 	while (stack)
 	{
-		size++;
+		if (0 > (long)stack->data)
+			printf("(%ld)%s", (long)stack->data, stack->next ? "->" : "");
+		else
+			printf("%ld%s", (long)stack->data, stack->next ? "->" : "");
 		stack = stack->next;
 	}
-	return (size);
+	printf("|\n");
 }
+

@@ -6,42 +6,42 @@
 /*   By: iboutadg <iboutadg@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/03 21:08:13 by iboutadg          #+#    #+#             */
-/*   Updated: 2024/02/06 16:47:04by iboutadg          ###   ########.fr       */
+/*   Updated: 2024/02/06 16:47:04by iboutadg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	sort(t_head *head)
+static int	fix_b(t_head *head)
 {
-	if (!head->b && stack_sorted(head->a))
-		return ;
-	if (stack_size(head->a) <= 3 && sort_3(head))
-		return ;
-	if (!head->b && push_b(head, 1))
-		push_b(head, 1);
-	if (!head->a && push_all_to_a(head))
-		return ;
-	set_cost(head);
-	//push_least_cost(head);
-	sort(head);
-}
+	t_stack *tmp;
+	int		i;
+	int		reverse;
 
-int	main(int ac, char **av)
-{
-	t_head	head;
-
-	head.b = NULL;
-	head.a = NULL;
-	if (ac > 1)
+	tmp = head->b;
+	i = 1;
+	reverse = 0;
+	while (tmp->next && tmp->data > tmp->next->data && i++)
+		tmp = tmp->next;
+	if (!tmp->next)
+		i = 0;
+	if (i > stack_size(head->b) / 2)
 	{
-		head.a = parse(ac, av);
-		print_stack(head.a);
-		set_cost(&head);
-		print_stack_cost(head.a);
+		reverse = 1;
+		i = stack_size(head->b) - i;
 	}
-	free_stack(head.a);
-	free_stack(head.b);
-	my_free(head.b);
-	return (0);
+	while (!reverse && i--)
+		rotate_b(head, 1);
+	while (reverse && i--)
+		r_rotate_b(head, 1);
+	return (1);
 }
+
+int	push_all_to_a(t_head *head)
+{
+	fix_b(head);
+	while (head->b)
+		push_a(head, 1);
+	return (1);
+}
+
