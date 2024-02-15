@@ -25,6 +25,17 @@ int	stack_size(t_stack *stack)
 	return (size);
 }
 
+int stack_sorted_reverse(t_stack *stack)
+{
+	while (stack->next)
+	{
+		if (stack->data <= stack->next->data)
+			return (0);
+		stack = stack->next;
+	}
+	return (1);
+}
+
 int stack_sorted(t_stack *stack)
 {
 	while (stack->next)

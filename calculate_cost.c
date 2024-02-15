@@ -12,49 +12,102 @@
 
 #include "push_swap.h"
 
-int	calculate_location(t_head *head, void *data)
+static int is_max_or_min(void *data, t_stack *stack)
+{
+	void	*min;
+	void	*max;
+	
+	if (!stack)
+		return (1);
+	min = stack->data;
+	max = stack->data;
+	while (stack)
+	{
+		if (min > stack->data)
+			min = stack->data;
+		if (max < stack->data)
+			max = stack->data;
+		stack = stack->next;
+	}
+	if (data >= max || data <= min)
+		return (1);
+	return (0);
+}
+
+static int	get_max_position(t_stack *stack)
+{
+	void	*max;
+	int		max_position;
+	int		position;
+
+	max = stack->data;
+	max_position = 1;
+	position = 0;
+	if (!stack || stack_sorted_reverse(stack))
+		return (1);
+	while (stack && ++position)
+	{
+		if (stack->data > max)
+		{
+			max = stack->data;
+			max_position = position;
+		}
+		stack = stack->next;
+	}
+	return (max_position);
+}
+
+static int	calculate_position(t_head *head, void *data)
 {
 	t_stack *tmp;
-	int	location;
+	int		position;
 
 	tmp = head->b;
-	location = 0;
-	while (tmp && data < tmp->data && ++location)
+	position = 0;
+	if (!tmp || (data >= tmp->data && stack_sorted_reverse(head->b))\
+			|| is_max_or_min(data, tmp))
+		return (get_max_position(tmp) - 1);
+	while (tmp && data < tmp->data && ++position)
 		tmp = tmp->next;
 	if (!tmp)
 		return (0);
-	return (location);
+	return (position);
 }
 
-int	calculate_cost(int l_a, int l_b, int s_a, int s_b)
+static int	calculate_cost(t_head *head, int p_a, int p_b)
 {
-	int	res;
+	int			res;
+	static int	s_a = -1;
+	static int	s_b = -1;
 
+	if (s_a == -1 || s_b == -1)
+	{
+		s_a = stack_size(head->a);
+		s_b = stack_size(head->b);
+	}
 	res = 1;
-	res += l_a * (l_a <= s_a / 2) + (s_a - l_a) * (l_a > s_a / 2);
-	res += l_b * (l_b <= s_b / 2) + (s_b - l_b) * (l_b > s_b / 2);
+	res += p_a * (p_a <= s_a / 2) + (s_a - p_a) * (p_a > s_a / 2);
+	res += p_b * (p_b <= s_b / 2) + (s_b - p_b) * (p_b > s_b / 2);
 	return (res);
 }
 
-int	set_cost(t_head *head)
+t_stack	*set_cost(t_head *head)
 {
 	t_stack	*tmp;
-	int		location_a;
-	int		location_b;
-	int		size_a;
-	int		size_b;
+	t_stack	*least_costing;
+	int		position_a;
+	int		position_b;
 
 	tmp = head->a;
-	size_a = stack_size(head->a);
-	size_b = stack_size(head->b);
-	location_a = 0;
-	while(tmp)
-	{
-		location_b = calculate_location(head, tmp->data);
-		tmp->cost = calculate_cost(location_a, location_b,\
-				size_a, size_b);
-		location_a++;
+	position_a = 0;
+	least_costing = tmp;
+	while(tmp) {
+		position_b = calculate_position(head, tmp->data);
+		tmp->cost = calculate_cost(head, position_a, position_b);
+		if (tmp->cost < least_costing->cost)
+			least_costing = tmp;
+		position_a++;
 		tmp = tmp->next;
 	}
-	return (1);
+	return (least_costing);
 }

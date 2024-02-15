@@ -37,6 +37,7 @@ void	print_stack(t_stack *stack);
 void	print_stack_cost(t_stack *stack);
 int		stack_size(t_stack *stack);
 int		stack_sorted(t_stack *stack);
+int		stack_sorted_reverse(t_stack *stack);
 void	free_stack(t_stack *s);
 
 // malloc and free implementations
@@ -71,6 +72,7 @@ t_stack	*parse(int ac, char **av);
 //sorting functions
 int sort_3(t_head *head);
 int	push_all_to_a(t_head *head);
-int	set_cost(t_head *head);
+t_stack	*set_cost(t_head *head);
+int push_least_cost(t_head *head, t_stack *lc);
 
 #endif
