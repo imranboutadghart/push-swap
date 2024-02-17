@@ -49,10 +49,10 @@ int	main(int ac, char **av)
 		t_stack *tmp = set_cost(&head);//set cost errors
 		printf ("cost:");
 		print_stack_cost(head.a);
-		push_least_cost(&head, tmp);
+		//push_least_cost(&head, tmp);
 		printf ("a_n:  ");
-		print_stack(head.a);
-		//printf("least costing(%ld)\n", (long)tmp->data);
+		//print_stack(head.a);
+		printf("least costing(%ld)\n", (long)tmp->data);
 	}
 	free_stack(head.a);
 	free_stack(head.b);

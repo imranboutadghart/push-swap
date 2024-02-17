@@ -57,7 +57,7 @@ static int	get_max_position(t_stack *stack)
 	return (max_position);
 }
 
-static int	calculate_position(t_head *head, void *data)
+static int	calculate_position_in_b(t_head *head, void *data)
 {
 	t_stack *tmp;
 	int		position;
@@ -86,8 +86,8 @@ static int	calculate_cost(t_head *head, int p_a, int p_b)
 		s_b = stack_size(head->b);
 	}
 	res = 1;
-	res += p_a * (p_a <= s_a / 2) + (s_a - p_a) * (p_a > s_a / 2);
-	res += p_b * (p_b <= s_b / 2) + (s_b - p_b) * (p_b > s_b / 2);
+	res += p_a * (p_a <= s_a / 2) + (s_a + 1 - p_a) * (p_a > s_a / 2);
+	res += p_b * (p_b <= s_b / 2) + (s_b + 1 - p_b) * (p_b > s_b / 2);
 	return (res);
 }
 
@@ -102,7 +102,7 @@ t_stack	*set_cost(t_head *head)
 	position_a = 0;
 	least_costing = tmp;
 	while(tmp) {
-		position_b = calculate_position(head, tmp->data);
+		position_b = calculate_position_in_b(head, tmp->data);
 		tmp->cost = calculate_cost(head, position_a, position_b);
 		if (tmp->cost < least_costing->cost)
 			least_costing = tmp;
