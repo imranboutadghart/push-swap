@@ -12,29 +12,26 @@
 
 #include "push_swap.h"
 
-int	rotate_r(t_head *head, int print)
+int	rotate_r(t_head *head)
 {
-	(void)print;
-	rotate_a(head, 0);
-	rotate_b(head, 0);
-	write(1, "rr\n", 3);
+	rotate_a(head);
+	rotate_b(head);
+	put_instruction(RR);
 	return (1);
 }
 
-int	r_rotate_r(t_head *head, int print)
+int	r_rotate_r(t_head *head)
 {
-	(void)print;
-	r_rotate_a(head, 0);
-	r_rotate_b(head, 0);
-	write(1, "rrr\n", 4);
+	r_rotate_a(head);
+	r_rotate_b(head);
+	put_instruction(RRR);
 	return (1);
 }
 
-int	swap_s(t_head *head, int print)
+int	swap_s(t_head *head)
 {
-	(void)print;
-	swap_a(head, 0);
-	swap_b(head, 0);
-	write(1, "ss\n", 3);
+	swap_a(head);
+	swap_b(head);
+	put_instruction(SS);
 	return (1);
 }

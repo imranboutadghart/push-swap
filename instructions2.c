@@ -12,42 +12,38 @@
 
 #include "push_swap.h"
 
-int	push_a(t_head *head, int print)
+int	push_a(t_head *head)
 {
-	(void)print;
-	write(1, "pa\n", 3);
 	push(&head->a, pop(&head->b));
+	put_instruction(PA);
 	return (1);
 }
 
-int	push_b(t_head *head, int print)
+int	push_b(t_head *head)
 {
-	(void)print;
-	write(1, "pb\n", 3);
 	push(&head->b, pop(&head->a));
+	put_instruction(PB);
 	return (1);
 }
 
-int	swap_a(t_head *head, int print)
+int	swap_a(t_head *head)
 {
 	void	*tmp;
 	
 	tmp = head->a->data;
 	head->a->data = head->a->next->data;
 	head->a->next->data = tmp;
-	if (print)
-	write(1, "sa\n", 3);
+	put_instruction(SA);
 	return (1);
 }
 
-int	swap_b(t_head *head, int print)
+int	swap_b(t_head *head)
 {
 	void	*tmp;
 	
 	tmp = head->b->data;
 	head->b->data = head->b->next->data;
 	head->b->next->data = tmp;
-	if (print)
-		write(1, "sb\n", 3);
+	put_instruction(SB);
 	return (1);
 }

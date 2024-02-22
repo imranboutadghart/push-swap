@@ -12,13 +12,13 @@
 
 #include "push_swap.h"
 
-int	rotate_a(t_head *head, int print)
+int	rotate_a(t_head *head)
 {
 	t_stack	*tmp;
 	t_stack	*tmp2;
 
 	if (stack_size(head->a) <= 2)
-		if (stack_size(head->a) <= 1 || swap_a(head, 1))
+		if (stack_size(head->a) <= 1 || swap_a(head))
 			return (1);
 	tmp = head->a;
 	head->a = head->a->next;
@@ -29,18 +29,17 @@ int	rotate_a(t_head *head, int print)
 		tmp2 = tmp2->next;
 	}
 	tmp2->next = tmp;
-	if (print)
-		write(1, "ra\n", 3);
+	put_instruction(RA);
 	return (1);
 }
 
-int	rotate_b(t_head *head, int print)
+int	rotate_b(t_head *head)
 {
 	t_stack	*tmp;
 	t_stack	*tmp2;
 
 	if (stack_size(head->b) <= 2)
-		if (stack_size(head->b) <= 1 || swap_b(head, 1))
+		if (stack_size(head->b) <= 1 || swap_b(head))
 			return (1);
 	tmp = head->b;
 	head->b = head->b->next;
@@ -51,17 +50,16 @@ int	rotate_b(t_head *head, int print)
 		tmp2 = tmp2->next;
 	}
 	tmp2->next = tmp;
-	if (print)
-		write(1, "rb\n", 3);
+	put_instruction(RB);
 	return (1);
 }
 
-int r_rotate_a(t_head *head, int print)
+int r_rotate_a(t_head *head)
 {
 	t_stack	*tmp;
 	
 	if (stack_size(head->a) <= 2)
-		if (stack_size(head->a) <= 1 || swap_a(head, 1))
+		if (stack_size(head->a) <= 1 || swap_a(head))
 			return (1);
 	tmp = head->a;
 	while(tmp->next && tmp->next->next)
@@ -71,17 +69,16 @@ int r_rotate_a(t_head *head, int print)
 	tmp->next->next = head->a;
 	head->a = tmp->next;
 	tmp->next = NULL;
-	if (print)
-		write(1, "rra\n", 4);
+	put_instruction(RRA);
 	return (1);
 }
 
-int r_rotate_b(t_head *head, int print)
+int r_rotate_b(t_head *head)
 {
 	t_stack	*tmp;
 	
 	if (stack_size(head->b) <= 2)
-		if (stack_size(head->b) <= 1 || swap_b(head, 1))
+		if (stack_size(head->b) <= 1 || swap_b(head))
 			return (1);
 	tmp = head->b;
 	while(tmp->next && tmp->next->next)
@@ -91,7 +88,6 @@ int r_rotate_b(t_head *head, int print)
 	tmp->next->next = head->b;
 	head->b = tmp->next;
 	tmp->next = NULL;
-	if (print)
-		write(1, "rrb\n", 4);
+	put_instruction(RRB);
 	return (1);
 }

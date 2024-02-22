@@ -27,6 +27,9 @@ echo :
 	@echo [BINDIR]"\n"$(BINDIR)"\n"
 	
 
+debugflags : CFLAGS+=-g -fdiagnostics-color=always
+debugflags : re
+
 debug : CFLAGS+=-g
 debug : re
 	gdb ./$(NAME)
