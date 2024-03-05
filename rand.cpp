@@ -19,15 +19,17 @@ int in_array(int *arr, int size, int n)
 
 int	main(int ac, char **av)
 {
+	if (ac < 2)
+		return (1);
 	int size = atoi(av[1]);
 	int	i = 0;
 	int tmp;
-	int *arr = malloc(size * sizeof(int));
+	int *arr = new int[size];
 	if (ac > 2)
 		srand(atoi(av[2]));
 	while(i < size)
 	{
-		while (in_array(arr, i, tmp = rand() % 500))
+		while (in_array(arr, i, tmp = rand() % size))
 			;
 		arr[i++] = tmp;
 	}
@@ -35,4 +37,5 @@ int	main(int ac, char **av)
 	while (i < size)
 		printf("%d ", arr[i++]);
 	printf("\n");
+	delete[] arr;
 }

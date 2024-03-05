@@ -33,9 +33,9 @@ static int	fix_a(t_head *head)
 		i = stack_size(head->a) - i;
 	}
 	while (!reverse && i--)
-		rotate_a(head);
+		rotate_a(head, 1);
 	while (reverse && i--)
-		r_rotate_a(head);
+		r_rotate_a(head, 1);
 	return (1);
 }
 
@@ -60,9 +60,9 @@ static int	fix_b(t_head *head)
 		i = stack_size(head->b) - i;
 	}
 	while (!reverse && i--)
-		rotate_b(head);
+		rotate_b(head, 1);
 	while (reverse && i--)
-		r_rotate_b(head);
+		r_rotate_b(head, 1);
 	return (1);
 }
 
@@ -78,16 +78,15 @@ int	push_all_to_a(t_head *head)
 		position = calculate_position_in_a(head->a, head->b->data);
 		size_a = stack_size(head->a);
 		if (size_a - 1 == position)
-			r_rotate_a(head);
+			r_rotate_a(head, 1);
 		else if (1 == position)
-			rotate_a(head);
-		else if (size_a - 2 == position && r_rotate_a(head))
-			r_rotate_a(head);
-		else if (size_a > 3 && size_a - 3 == position && r_rotate_a(head) && r_rotate_a(head))
-			r_rotate_a(head);
-		push_a(head);
+			rotate_a(head, 1);
+		else if (size_a - 2 == position && r_rotate_a(head, 1))
+			r_rotate_a(head, 1);
+		else if (size_a > 3 && size_a - 3 == position && r_rotate_a(head, 1) && r_rotate_a(head, 1))
+			r_rotate_a(head, 1);
+		push_a(head, 1);
 	}
 	fix_a(head);
 	return (1);
 }
-

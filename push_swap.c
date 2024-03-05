@@ -6,7 +6,7 @@
 /*   By: iboutadg <iboutadg@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/03 21:08:13 by iboutadg          #+#    #+#             */
-/*   Updated: 2024/02/06 16:47:04by iboutadg          ###   ########.fr       */
+/*   Updated: 2024/03/05 11:50:22 by iboutadg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,8 @@ void	sort(t_head *head)
 		return ;
 	if (stack_size(head->a) <= 3 && sort_3(head))
 		return ;
-	if (!head->b && stack_size(head->a) >= 5 && push_b(head) && stack_size(head->a) > 4)
-		push_b(head);
+	if (!head->b && stack_size(head->a) >= 5 && push_b(head, 1) && stack_size(head->a) > 4)
+		push_b(head, 1);
 	if (!head->a && push_all_to_a(head))
 		return ;
 	push_least_cost(head, set_cost(head));

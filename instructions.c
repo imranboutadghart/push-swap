@@ -30,7 +30,7 @@ void clear_arr(int *arr, int size)
 
 }
 
-void put_instruction(int instruction)
+int put_instruction(int instruction)
 {
 	static int	arr[BUFFER_SIZE] = {0};
 	static int	i = 0;
@@ -42,4 +42,5 @@ void put_instruction(int instruction)
 		clear_arr(arr, i);
 		i = 0;
 	}
+	return (1);
 }

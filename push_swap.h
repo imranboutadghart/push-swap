@@ -6,7 +6,7 @@
 /*   By: iboutadg <iboutadg@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/03 21:08:30 by iboutadg          #+#    #+#             */
-/*   Updated: 2024/02/07 17:00:09 by iboutadg         ###   ########.fr       */
+/*   Updated: 2024/03/05 12:04:16 by iboutadg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,7 @@ void	free_stack(t_stack *s);
 void	*my_malloc(size_t n);
 void	my_free(void *ptr);
 void	free_all(void);
+void	*my_realloc(void *ptr, size_t old_size, size_t new_size);
 
 // utils
 size_t	ft_strlen(const char *s);
@@ -69,20 +70,20 @@ int		error(void);
 int		my_exit(int exit_code);
 
 //instructions
-int	push_a(t_head *head);
-int	push_b(t_head *head);
-int	rotate_a(t_head *head);
-int	rotate_b(t_head *head);
-int	rotate_r(t_head *head);
-int r_rotate_a(t_head *head);
-int r_rotate_b(t_head *head);
-int r_rotate_r(t_head *head);
-int	swap_a(t_head *head);
-int	swap_b(t_head *head);
-int	swap_s(t_head *head);
+int	push_a(t_head *head, int print);
+int	push_b(t_head *head, int print);
+int	rotate_a(t_head *head, int print);
+int	rotate_b(t_head *head, int print);
+int	rotate_r(t_head *head, int print);
+int r_rotate_a(t_head *head, int print);
+int r_rotate_b(t_head *head, int print);
+int r_rotate_r(t_head *head, int print);
+int	swap_a(t_head *head, int print);
+int	swap_b(t_head *head, int print);
+int	swap_s(t_head *head, int print);
 
 //instruction handlers
-void	put_instruction(int instruction);
+int	put_instruction(int instruction);
 
 //parsing
 t_stack	*parse(int ac, char **av);

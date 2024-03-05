@@ -42,16 +42,16 @@ int	sort_3(t_head *head)
 	int		state;
 
 	tmp = head->a;
-	if ((stack_size(head->a) == 1) || (stack_size(head->a) == 2 && swap_a(head)))
+	if ((stack_size(head->a) == 1) || (stack_size(head->a) == 2 && swap_a(head, 1)))
 		return (1);
 	if (stack_sorted(tmp))
 		return (1);
 	state = stack_state(tmp);
-	if ((state == R || state == RS) && rotate_a(head) && sort_3(head))
+	if ((state == R || state == RS) && rotate_a(head, 1) && sort_3(head))
 		return (1);
-	if ((state == S  || state == SR) && swap_a(head) && sort_3(head))
+	if ((state == S  || state == SR) && swap_a(head, 1) && sort_3(head))
 		return (1);
-	if (state == REVR && r_rotate_a(head))
+	if (state == REVR && r_rotate_a(head, 1))
 		return (1);
 	return (1);
 }
