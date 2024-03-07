@@ -29,7 +29,7 @@ int	main(int ac, char **av)
 		srand(atoi(av[2]));
 	while(i < size)
 	{
-		while (in_array(arr, i, tmp = rand() % size))
+		while (in_array(arr, i, tmp = rand() % (size * (size < 20) + 100000 * (size >= 20))))
 			;
 		arr[i++] = tmp;
 	}

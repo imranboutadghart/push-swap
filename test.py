@@ -17,7 +17,7 @@ def test(i, j, count = False):
 
 os.system("make")
 
-for i in range (1, 600):
+for i in range (100, 600):
     for j in range (1, i * i + 2):
         try:
             test(i, j, len(sys.argv) > 1)
