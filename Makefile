@@ -2,9 +2,14 @@ CC=cc
 CFLAGS= -Wextra -Wall -Werror# -O3
 NAME= push_swap
 BINDIR:=bin
-SRC:= $(filter-out original_free_malloc.c, $(wildcard *.c))
+SRC:=calculate_cost.c clear_b.c instructions1.c instructions3.c \
+	least_cost.c mini_utils.c parsing.c realloc.c stack_implementation1.c\
+	utils.c calculate_position.c free.c instructions2.c instructions.c\
+	malloc.c original_free_malloc.c push_swap.c sort_3.c stack_implementation2.c
+SRC:= $(filter-out free.c malloc.c, $(SRC))
+
 OBJ:=$(patsubst %.c, $(BINDIR)/%.o,$(SRC))
-VALGRIND_SRC:=$(filter-out free.c malloc.c, $(wildcard *.c))
+VALGRIND_SRC:=$(filter-out original_free_malloc.c, $(wildcard *.c))
 VALGRIND_OBJ:=$(patsubst %.c,$(BINDIR)/%.o,$(VALGRIND_SRC))
 
 all : $(NAME)
@@ -17,18 +22,6 @@ $(BINDIR)/%.o : %.c | $(BINDIR)
 
 valgrind : $(VALGRIND_OBJ)
 	$(CC) $(CFLAGS) -o $(NAME) $(VALGRIND_OBJ)
-
-echo :
-	@echo [NAME]"\n"$(NAME)"\n"
-	@echo [SRC]"\n"$(SRC)"\n"
-	@echo [OBJ]"\n"$(OBJ)"\n"
-	@echo [VALGRIND_SRC]"\n"$(VALGRIND_SRC)"\n"
-	@echo [VALGRIND_OBJ]"\n"$(VALGRIND_OBJ)"\n"
-	@echo [BINDIR]"\n"$(BINDIR)"\n"
-	
-
-debugflags : CFLAGS+=-g -fdiagnostics-color=always
-debugflags : re
 
 debug : CFLAGS+=-g
 debug : re
