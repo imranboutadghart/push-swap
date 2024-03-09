@@ -41,7 +41,7 @@ t_stack	*set_cost(t_head *head)
 	least_costing = tmp;
 	while (tmp)
 	{
-		position_b = calculate_position_in_b(head->b, tmp->data);
+		position_b = calculate_position_in_b(head->b, (long)tmp->data);
 		tmp->cost = calculate_cost(head, position_a, position_b);
 		if (tmp->cost < least_costing->cost)
 			least_costing = tmp;

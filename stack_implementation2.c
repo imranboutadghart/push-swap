@@ -29,7 +29,7 @@ int	stack_sorted_reverse(t_stack *stack)
 {
 	while (stack->next)
 	{
-		if (stack->data <= stack->next->data)
+		if ((long)stack->data <= (long)stack->next->data)
 			return (0);
 		stack = stack->next;
 	}
@@ -40,7 +40,7 @@ int	stack_sorted(t_stack *stack)
 {
 	while (stack->next)
 	{
-		if (stack->data > stack->next->data)
+		if ((long)stack->data > (long)stack->next->data)
 			return (0);
 		stack = stack->next;
 	}

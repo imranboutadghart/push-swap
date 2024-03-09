@@ -12,21 +12,21 @@
 
 #include "push_swap.h"
 
-static int	is_max_or_min(void *data, t_stack *stack)
+static int	is_max_or_min(long data, t_stack *stack)
 {
-	void	*min;
-	void	*max;
+	long	min;
+	long	max;
 
 	if (!stack)
 		return (1);
-	min = stack->data;
-	max = stack->data;
+	min = (long)stack->data;
+	max = (long)stack->data;
 	while (stack)
 	{
-		if (min > stack->data)
-			min = stack->data;
-		if (max < stack->data)
-			max = stack->data;
+		if (min > (long)stack->data)
+			min = (long)stack->data;
+		if (max < (long)stack->data)
+			max = (long)stack->data;
 		stack = stack->next;
 	}
 	if (data >= max || data <= min)
@@ -36,20 +36,20 @@ static int	is_max_or_min(void *data, t_stack *stack)
 
 static int	get_min_position(t_stack *stack)
 {
-	void	*min;
+	long	min;
 	int		min_position;
 	int		position;
 
-	min = stack->data;
+	min = (long)stack->data;
 	min_position = 1;
 	position = 0;
 	if (!stack || stack_sorted_reverse(stack))
 		return (1);
 	while (stack && ++position)
 	{
-		if (stack->data < min)
+		if ((long)stack->data < min)
 		{
-			min = stack->data;
+			min = (long)stack->data;
 			min_position = position;
 		}
 		stack = stack->next;
@@ -59,22 +59,22 @@ static int	get_min_position(t_stack *stack)
 
 static int	get_max_position(t_stack *stack)
 {
-	void	*max;
+	long	max;
 	int		max_position;
 	int		position;
 
 	if (!stack)
 		return (0);
-	max = stack->data;
+	max = (long)stack->data;
 	max_position = 1;
 	position = 0;
 	if (!stack || stack_sorted_reverse(stack))
 		return (1);
 	while (stack && ++position)
 	{
-		if (stack->data > max)
+		if ((long)stack->data > max)
 		{
-			max = stack->data;
+			max = (long)stack->data;
 			max_position = position;
 		}
 		stack = stack->next;
@@ -82,7 +82,7 @@ static int	get_max_position(t_stack *stack)
 	return (max_position);
 }
 
-int	calculate_position_in_b(t_stack *s, void *data)
+int	calculate_position_in_b(t_stack *s, long data)
 {
 	t_stack	*tmp;
 	int		position;
@@ -91,12 +91,12 @@ int	calculate_position_in_b(t_stack *s, void *data)
 	tmp = s;
 	position = 0;
 	max_position = get_max_position(tmp);
-	if (!tmp || (data >= tmp->data && stack_sorted_reverse(s)) \
+	if (!tmp || (data >= (long)tmp->data && stack_sorted_reverse(s)) \
 			|| is_max_or_min(data, tmp))
 		return ((tmp != 0) * (max_position - 1));
 	while (tmp && ++position != max_position)
 		tmp = tmp->next;
-	while (tmp && data < tmp->data)
+	while (tmp && data < (long)tmp->data)
 	{
 		if (!tmp->next)
 		{
@@ -110,7 +110,7 @@ int	calculate_position_in_b(t_stack *s, void *data)
 	return (position - 1);
 }
 
-int	calculate_position_in_a(t_stack *s, void *data)
+int	calculate_position_in_a(t_stack *s, long data)
 {
 	t_stack	*tmp;
 
@@ -121,17 +121,17 @@ int	calculate_position_in_a(t_stack *s, void *data)
 		return (0);
 	while (tmp->next)
 		tmp = tmp->next;
-	if (tmp->data < data)
+	if ((long)tmp->data < data)
 		return (0);
 	tmp = s;
 	while (tmp && tmp->next && tmp->next->next)
 		tmp = tmp->next;
-	if (tmp->data < data)
+	if ((long)tmp->data < data)
 		return (stack_size(s) - 1);
 	tmp = s;
 	while (tmp && tmp->next && tmp->next->next && tmp->next->next->next)
 		tmp = tmp->next;
-	if (tmp->data < data)
+	if ((long)tmp->data < data)
 		return (stack_size(s) - 2);
 	if (is_max_or_min(data, s))
 		return (get_min_position(s) - 1);

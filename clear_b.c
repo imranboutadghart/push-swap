@@ -23,7 +23,7 @@ static int	fix_a(t_head *head)
 		return (0);
 	i = 1;
 	reverse = 0;
-	while (tmp->next && tmp->data < tmp->next->data && i++)
+	while (tmp->next && (long)tmp->data < (long)tmp->next->data && i++)
 		tmp = tmp->next;
 	if (!tmp->next)
 		i = 0;
@@ -50,7 +50,7 @@ static int	fix_b(t_head *head)
 		return (0);
 	i = 1;
 	reverse = 0;
-	while (tmp->next && tmp->data > tmp->next->data && i++)
+	while (tmp->next && (long)tmp->data > (long)tmp->next->data && i++)
 		tmp = tmp->next;
 	if (!tmp->next)
 		i = 0;
@@ -75,7 +75,7 @@ int	push_all_to_a(t_head *head)
 		fix_b(head);
 	while (head->b)
 	{
-		position = calculate_position_in_a(head->a, head->b->data);
+		position = calculate_position_in_a(head->a, (long)head->b->data);
 		size_a = stack_size(head->a);
 		if (size_a - 1 == position)
 			r_rotate_a(head, 1);

@@ -20,9 +20,9 @@ static int	stack_state(t_stack *s)
 	int	b;
 	int	c;
 
-	a = s->data > s->next->data;
-	b = s->data > s->next->next->data;
-	c = s->next->data > s->next->next->data;
+	a = (long)s->data > (long)s->next->data;
+	b = (long)s->data > (long)s->next->next->data;
+	c = (long)s->next->data > (long)s->next->next->data;
 	if (!a && !b && c)
 		return (sr);
 	if (a && !b && !c)

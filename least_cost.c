@@ -93,7 +93,7 @@ static void	fix_position_b(t_head *head, t_stack *lc)
 	int	b_size;
 
 	b_size = stack_size(head->b);
-	position = calculate_position_in_b(head->b, lc->data);
+	position = calculate_position_in_b(head->b, (long)lc->data);
 	while ((position <= b_size / 2) && position > 0 \
 			&& rotate_b(head, 0) && stack_instructions(1, ROT))
 		--position;
