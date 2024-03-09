@@ -1,5 +1,5 @@
 CC=cc
-CFLAGS= -Wextra -Wall #-Werror -O3
+CFLAGS= -Wextra -Wall -Werror# -O3
 NAME= push_swap
 BINDIR:=bin
 SRC:= $(filter-out original_free_malloc.c, $(wildcard *.c))

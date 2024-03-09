@@ -92,7 +92,7 @@ int		sort_3(t_head *head);
 int		push_all_to_a(t_head *head);
 t_stack	*set_cost(t_head *head);
 int		push_least_cost(t_head *head, t_stack *lc);
-int		calculate_position_in_b(t_stack *s, void *data);
-int		calculate_position_in_a(t_stack *s, void *data);
+int		calculate_position_in_b(t_stack *s, long data);
+int		calculate_position_in_a(t_stack *s, long data);
 
 #endif
