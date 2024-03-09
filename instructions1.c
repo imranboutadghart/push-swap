@@ -6,7 +6,7 @@
 /*   By: iboutadg <iboutadg@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/06 16:47:19 by iboutadg          #+#    #+#             */
-/*   Updated: 2024/03/05 11:54:08 by iboutadg         ###   ########.fr       */
+/*   Updated: 2024/03/09 15:54:16 by iboutadg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,10 +66,10 @@ int	rotate_b(t_head *head, int print)
 	return (1);
 }
 
-int r_rotate_a(t_head *head, int print)
+int	r_rotate_a(t_head *head, int print)
 {
 	t_stack	*tmp;
-	
+
 	if (stack_size(head->a) <= 2)
 	{
 		if (stack_size(head->a) <= 1 || swap_a(head, 0))
@@ -78,10 +78,8 @@ int r_rotate_a(t_head *head, int print)
 	else
 	{
 		tmp = head->a;
-		while(tmp->next && tmp->next->next)
-		{
+		while (tmp->next && tmp->next->next)
 			tmp = tmp->next;
-		}
 		tmp->next->next = head->a;
 		head->a = tmp->next;
 		tmp->next = NULL;
@@ -91,10 +89,10 @@ int r_rotate_a(t_head *head, int print)
 	return (1);
 }
 
-int r_rotate_b(t_head *head, int print)
+int	r_rotate_b(t_head *head, int print)
 {
 	t_stack	*tmp;
-	
+
 	if (stack_size(head->b) <= 2)
 	{
 		if (stack_size(head->b) <= 1 || swap_b(head, 0))
@@ -103,7 +101,7 @@ int r_rotate_b(t_head *head, int print)
 	else
 	{
 		tmp = head->b;
-		while(tmp->next && tmp->next->next)
+		while (tmp->next && tmp->next->next)
 		{
 			tmp = tmp->next;
 		}

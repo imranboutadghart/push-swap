@@ -6,7 +6,7 @@
 /*   By: iboutadg <iboutadg@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/06 16:47:19 by iboutadg          #+#    #+#             */
-/*   Updated: 2024/03/05 11:49:05 by iboutadg         ###   ########.fr       */
+/*   Updated: 2024/03/09 15:53:20 by iboutadg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,8 +35,6 @@ int	swap_s(t_head *head, int print)
 	swap_a(head, 0);
 	swap_b(head, 0);
 	if (print)
-		if (print)
-		if (print)
 		put_instruction(SS);
 	return (1);
 }

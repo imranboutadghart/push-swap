@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.c                                        :+:      :+:    :+:   */
+/*   clear_b.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: iboutadg <iboutadg@student.42.fr>          +#+  +:+       +#+        */
+/*   By: iboutadg <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/03 21:08:13 by iboutadg          #+#    #+#             */
-/*   Updated: 2024/02/06 16:47:04by iboutadg         ###   ########.fr       */
+/*   Created: 2024/03/09 15:52:51 by iboutadg          #+#    #+#             */
+/*   Updated: 2024/03/09 15:52:57 by iboutadg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 static int	fix_a(t_head *head)
 {
-	t_stack *tmp;
+	t_stack	*tmp;
 	int		i;
 	int		reverse;
 
@@ -41,7 +41,7 @@ static int	fix_a(t_head *head)
 
 static int	fix_b(t_head *head)
 {
-	t_stack *tmp;
+	t_stack	*tmp;
 	int		i;
 	int		reverse;
 
@@ -83,7 +83,8 @@ int	push_all_to_a(t_head *head)
 			rotate_a(head, 1);
 		else if (size_a - 2 == position && r_rotate_a(head, 1))
 			r_rotate_a(head, 1);
-		else if (size_a > 3 && size_a - 3 == position && r_rotate_a(head, 1) && r_rotate_a(head, 1))
+		else if (size_a > 3 && size_a - 3 == position \
+				&& r_rotate_a(head, 1) && r_rotate_a(head, 1))
 			r_rotate_a(head, 1);
 		push_a(head, 1);
 	}

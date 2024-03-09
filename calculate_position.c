@@ -1,22 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.c                                        :+:      :+:    :+:   */
+/*   calculate_position.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: iboutadg <iboutadg@student.42.fr>          +#+  +:+       +#+        */
+/*   By: iboutadg <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/03 21:08:13 by iboutadg          #+#    #+#             */
-/*   Updated: 2024/02/06 16:47:04by iboutadg          ###   ########.fr       */
+/*   Created: 2024/03/09 15:36:43 by iboutadg          #+#    #+#             */
+/*   Updated: 2024/03/09 16:04:45 by iboutadg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static int is_max_or_min(void *data, t_stack *stack)
+static int	is_max_or_min(void *data, t_stack *stack)
 {
 	void	*min;
 	void	*max;
-	
+
 	if (!stack)
 		return (1);
 	min = stack->data;
@@ -63,6 +63,8 @@ static int	get_max_position(t_stack *stack)
 	int		max_position;
 	int		position;
 
+	if (!stack)
+		return (0);
 	max = stack->data;
 	max_position = 1;
 	position = 0;
@@ -82,18 +84,16 @@ static int	get_max_position(t_stack *stack)
 
 int	calculate_position_in_b(t_stack *s, void *data)
 {
-	t_stack *tmp;
+	t_stack	*tmp;
 	int		position;
 	int		max_position;
 
 	tmp = s;
-	if (!tmp)
-		return (0);
 	position = 0;
 	max_position = get_max_position(tmp);
-	if ((data >= tmp->data && stack_sorted_reverse(s))\
+	if (!tmp || (data >= tmp->data && stack_sorted_reverse(s)) \
 			|| is_max_or_min(data, tmp))
-		return (max_position - 1);
+		return ((tmp != 0) * (max_position - 1));
 	while (tmp && ++position != max_position)
 		tmp = tmp->next;
 	while (tmp && data < tmp->data)
@@ -112,7 +112,7 @@ int	calculate_position_in_b(t_stack *s, void *data)
 
 int	calculate_position_in_a(t_stack *s, void *data)
 {
-	t_stack *tmp;
+	t_stack	*tmp;
 
 	tmp = s;
 	if (!tmp)

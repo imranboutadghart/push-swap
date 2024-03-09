@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.c                                        :+:      :+:    :+:   */
+/*   calculate_cost.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: iboutadg <iboutadg@student.42.fr>          +#+  +:+       +#+        */
+/*   By: iboutadg <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/03 21:08:13 by iboutadg          #+#    #+#             */
-/*   Updated: 2024/02/06 16:47:04by iboutadg          ###   ########.fr       */
+/*   Created: 2024/03/09 15:59:25 by iboutadg          #+#    #+#             */
+/*   Updated: 2024/03/09 16:00:10 by iboutadg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,8 @@ t_stack	*set_cost(t_head *head)
 	tmp = head->a;
 	position_a = 0;
 	least_costing = tmp;
-	while(tmp) {
+	while (tmp)
+	{
 		position_b = calculate_position_in_b(head->b, tmp->data);
 		tmp->cost = calculate_cost(head, position_a, position_b);
 		if (tmp->cost < least_costing->cost)

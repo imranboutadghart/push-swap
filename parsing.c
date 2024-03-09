@@ -6,7 +6,7 @@
 /*   By: iboutadg <iboutadg@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/03 21:08:16 by iboutadg          #+#    #+#             */
-/*   Updated: 2024/02/05 23:07:42 by iboutadg         ###   ########.fr       */
+/*   Updated: 2024/03/09 16:46:53 by iboutadg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ static int	ft_atoi(const char *str, int index, t_stack	**stack)
 	i = index;
 	s = 1;
 	res = 0;
-	while (str[i] == ' ' || (str[i] >= 9 && str[i] <= 13))
+	while (in_str(str[i], " \t\n\v\f\r"))
 		i++;
 	if (!str[i])
 		return (i);
@@ -49,7 +49,7 @@ static int	ft_atoi(const char *str, int index, t_stack	**stack)
 		if ((res > 2147483647 && s == 1) || (res > 2147483648 && s == -1))
 			my_exit(error());
 	}
-	if ((!in_str(str[i], " \t\n\v\f\r") && str[i])\
+	if ((!in_str(str[i], " \t\n\v\f\r") && str[i]) \
 				|| in_stack(*stack, (void *)(res * s)))
 		my_exit(error());
 	return (push_back(stack, (void *)(res * s)), i);
@@ -90,4 +90,3 @@ t_stack	*parse(int ac, char **av)
 	my_free(str);
 	return (stack);
 }
-

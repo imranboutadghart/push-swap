@@ -6,7 +6,7 @@
 /*   By: iboutadg <iboutadg@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/03 21:08:30 by iboutadg          #+#    #+#             */
-/*   Updated: 2024/03/05 12:04:16 by iboutadg         ###   ########.fr       */
+/*   Updated: 2024/03/09 16:02:34 by iboutadg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 # define PUSH_SWAP_H
 # include <stdlib.h>
 # include <unistd.h>
-# include <stdio.h>/////////////////////////////////////////////////////////////////
 # include <limits.h>
 
 //macros
@@ -38,7 +37,7 @@ typedef struct s_stack {
 	int				cost;
 }	t_stack;
 
-typedef struct	s_head {
+typedef struct s_head {
 	struct s_stack	*a;
 	struct s_stack	*b;
 }	t_head;
@@ -70,30 +69,30 @@ int		error(void);
 int		my_exit(int exit_code);
 
 //instructions
-int	push_a(t_head *head, int print);
-int	push_b(t_head *head, int print);
-int	rotate_a(t_head *head, int print);
-int	rotate_b(t_head *head, int print);
-int	rotate_r(t_head *head, int print);
-int r_rotate_a(t_head *head, int print);
-int r_rotate_b(t_head *head, int print);
-int r_rotate_r(t_head *head, int print);
-int	swap_a(t_head *head, int print);
-int	swap_b(t_head *head, int print);
-int	swap_s(t_head *head, int print);
+int		push_a(t_head *head, int print);
+int		push_b(t_head *head, int print);
+int		rotate_a(t_head *head, int print);
+int		rotate_b(t_head *head, int print);
+int		rotate_r(t_head *head, int print);
+int		r_rotate_a(t_head *head, int print);
+int		r_rotate_b(t_head *head, int print);
+int		r_rotate_r(t_head *head, int print);
+int		swap_a(t_head *head, int print);
+int		swap_b(t_head *head, int print);
+int		swap_s(t_head *head, int print);
 
 //instruction handlers
-int	put_instruction(int instruction);
+int		put_instruction(int instruction);
 
 //parsing
 t_stack	*parse(int ac, char **av);
 
 //sorting functions
-int sort_3(t_head *head);
-int	push_all_to_a(t_head *head);
+int		sort_3(t_head *head);
+int		push_all_to_a(t_head *head);
 t_stack	*set_cost(t_head *head);
-int push_least_cost(t_head *head, t_stack *lc);
-int	calculate_position_in_b(t_stack *s, void *data);
-int	calculate_position_in_a(t_stack *s, void *data);
+int		push_least_cost(t_head *head, t_stack *lc);
+int		calculate_position_in_b(t_stack *s, void *data);
+int		calculate_position_in_a(t_stack *s, void *data);
 
 #endif

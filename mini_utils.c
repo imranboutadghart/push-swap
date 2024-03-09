@@ -6,7 +6,7 @@
 /*   By: iboutadg <iboutadg@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/04 15:21:49 by iboutadg          #+#    #+#             */
-/*   Updated: 2024/02/04 15:25:44 by iboutadg         ###   ########.fr       */
+/*   Updated: 2024/03/09 15:58:14 by iboutadg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,4 +24,3 @@ int	my_exit(int exit_code)
 	exit(exit_code);
 	return (1);
 }
-

@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   stack_implementation.c                             :+:      :+:    :+:   */
+/*   stack_implementation2.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: iboutadg <iboutadg@student.42.fr>          +#+  +:+       +#+        */
+/*   By: iboutadg <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/03 21:08:19 by iboutadg          #+#    #+#             */
-/*   Updated: 2024/02/07 16:39:19 by iboutadg         ###   ########.fr       */
+/*   Created: 2024/03/09 15:51:27 by iboutadg          #+#    #+#             */
+/*   Updated: 2024/03/09 15:51:30 by iboutadg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	stack_size(t_stack *stack)
 {
-	int		size;
+	int	size;
 
 	size = 0;
 	while (stack)
@@ -25,7 +25,7 @@ int	stack_size(t_stack *stack)
 	return (size);
 }
 
-int stack_sorted_reverse(t_stack *stack)
+int	stack_sorted_reverse(t_stack *stack)
 {
 	while (stack->next)
 	{
@@ -36,7 +36,7 @@ int stack_sorted_reverse(t_stack *stack)
 	return (1);
 }
 
-int stack_sorted(t_stack *stack)
+int	stack_sorted(t_stack *stack)
 {
 	while (stack->next)
 	{
@@ -49,7 +49,7 @@ int stack_sorted(t_stack *stack)
 
 void	free_stack(t_stack *s)
 {
-	t_stack *tmp;
+	t_stack	*tmp;
 
 	while (s)
 	{
@@ -57,5 +57,4 @@ void	free_stack(t_stack *s)
 		my_free(s);
 		s = tmp;
 	}
-
 }
