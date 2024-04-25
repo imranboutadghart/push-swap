@@ -6,7 +6,7 @@
 /*   By: iboutadg <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/09 15:51:27 by iboutadg          #+#    #+#             */
-/*   Updated: 2024/03/09 15:51:30 by iboutadg         ###   ########.fr       */
+/*   Updated: 2024/04/23 15:31:36 by iboutadg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,17 @@ int	stack_sorted(t_stack *stack)
 		stack = stack->next;
 	}
 	return (1);
+}
+
+void	print_stack(t_stack *s)
+{
+	#include <stdio.h>
+	while (s)
+	{
+		printf("%ld->", (long)s->data);
+		s = s->next;
+	}
+	printf("\n");
 }
 
 void	free_stack(t_stack *s)

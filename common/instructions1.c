@@ -17,9 +17,11 @@ int	rotate_a(t_head *head, int print)
 	t_stack	*tmp;
 	t_stack	*tmp2;
 
-	if (stack_size(head->a) <= 2)
+	if (!head->a)
+		my_exit(ko());
+	if ((head->size_a) <= 2)
 	{
-		if (stack_size(head->a) <= 1 || swap_a(head, 0))
+		if ((head->size_a) <= 1 || swap_a(head, 0))
 			;
 	}
 	else
@@ -44,9 +46,11 @@ int	rotate_b(t_head *head, int print)
 	t_stack	*tmp;
 	t_stack	*tmp2;
 
-	if (stack_size(head->b) <= 2)
+	if (!head->b)
+		my_exit(ko());
+	if ((head->size_b) <= 2)
 	{
-		if (stack_size(head->b) <= 1 || swap_b(head, 0))
+		if ((head->size_b) <= 1 || swap_b(head, 0))
 			;
 	}
 	else
@@ -70,9 +74,11 @@ int	r_rotate_a(t_head *head, int print)
 {
 	t_stack	*tmp;
 
-	if (stack_size(head->a) <= 2)
+	if (!head->a)
+		my_exit(ko());
+	if ((head->size_a) <= 2)
 	{
-		if (stack_size(head->a) <= 1 || swap_a(head, 0))
+		if ((head->size_a) <= 1 || swap_a(head, 0))
 			;
 	}
 	else
@@ -93,9 +99,11 @@ int	r_rotate_b(t_head *head, int print)
 {
 	t_stack	*tmp;
 
-	if (stack_size(head->b) <= 2)
+	if (!head->b)
+		my_exit(ko());
+	if ((head->size_b) <= 2)
 	{
-		if (stack_size(head->b) <= 1 || swap_b(head, 0))
+		if ((head->size_b) <= 1 || swap_b(head, 0))
 			;
 	}
 	else

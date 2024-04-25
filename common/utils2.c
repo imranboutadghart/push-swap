@@ -1,30 +1,44 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   free.c                                             :+:      :+:    :+:   */
+/*   mini_utils.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: iboutadg <iboutadg@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/04 02:33:56 by iboutadg          #+#    #+#             */
-/*   Updated: 2024/02/04 02:41:38 by iboutadg         ###   ########.fr       */
+/*   Created: 2024/02/04 15:21:49 by iboutadg          #+#    #+#             */
+/*   Updated: 2024/03/09 15:58:14 by iboutadg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-t_stack	**get_memory(void);
-
-void	my_free(void *ptr)
+int	error(void)
 {
-	free(ptr);
+	write(2, "Error\n", 6);
+	return (1);
 }
 
-void	free_all(void)
+int	ko(void)
 {
-	return ;
+	write(1, "KO\n", 3);
+	return (0);
 }
 
-void	*my_malloc(size_t size)
+int	my_exit(int exit_code)
 {
-	return (malloc(size));
+	free_all();
+	exit(exit_code);
+	return (1);
+}
+
+int	ft_strncmp(const char *s1, const char *s2, size_t n)
+{
+	size_t	i;
+
+	if (s1 == s2 || !n)
+		return (0);
+	i = 0;
+	while (s1[i] && s2[i] && s1[i] == s2[i] && i < n - 1)
+		i++;
+	return ((unsigned char )s1[i] - (unsigned char )s2[i]);
 }

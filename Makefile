@@ -1,41 +1,51 @@
-CC=cc
-CFLAGS= -Wextra -Wall -Werror# -O3
-NAME= push_swap
+CC:=cc
+CFLAGS:= -Wextra -Wall -Werror -I.# -O3
+NAME:= push_swap
+BNAME:= checker
+
+.DEFAULT_GOAL := $(NAME)
+
 BINDIR:=bin
-SRC:=calculate_cost.c clear_b.c instructions1.c instructions3.c \
-	least_cost.c mini_utils.c parsing.c realloc.c stack_implementation1.c\
-	utils.c calculate_position.c free.c instructions2.c instructions.c\
-	malloc.c original_free_malloc.c push_swap.c sort_3.c stack_implementation2.c
-SRC:= $(filter-out free.c malloc.c, $(SRC))
+MANDIR:=mandatory
+BONDIR:=bonus
+COMMONDIR:=common
 
-OBJ:=$(patsubst %.c, $(BINDIR)/%.o,$(SRC))
-VALGRIND_SRC:=$(filter-out original_free_malloc.c, $(wildcard *.c))
-VALGRIND_OBJ:=$(patsubst %.c,$(BINDIR)/%.o,$(VALGRIND_SRC))
+COMMONSRC:= instructions1.c instructions2.c instructions3.c utils1.c utils2.c\
+			parsing.c stack_implementation1.c stack_implementation2.c instructions.c\
+			free.c malloc.c
+MSRC:=	to_array.c clear_b.c \
+		sort_3_5.c push_swap.c
+BSRC:= checker.c get_next_line.c get_next_line_utils.c
+MOBJ:=$(patsubst %.c, $(BINDIR)/%.o,$(MSRC) $(COMMONSRC))
+BOBJ:=$(patsubst %.c, $(BINDIR)/%.o,$(BSRC) $(COMMONSRC))
+vpath %.c $(MANDIR) $(BONDIR) $(COMMONDIR)
 
-all : $(NAME)
+all : $(NAME) $(BNAME)
 
-$(NAME) : $(OBJ)
-	$(CC) $(CFLAGS) -o $@ $(OBJ)
+$(NAME) : $(MOBJ)
+	$(CC) $(CFLAGS) -o $@ $(MOBJ)
 
-$(BINDIR)/%.o : %.c | $(BINDIR) 
+$(BNAME) : $(BOBJ)
+	$(CC) $(CFLAGS) -o $@ $(BOBJ)
+
+$(BINDIR)/%.o : %.c | $(BINDIR)
 	$(CC) $(CFLAGS) -o $@ -c $<
 
-valgrind : $(VALGRIND_OBJ)
-	$(CC) $(CFLAGS) -o $(NAME) $(VALGRIND_OBJ)
-
 debug : CFLAGS+=-g
-debug : re
-	gdb ./$(NAME)
+debug : fclean all
 
 clean :
 	rm -rf $(BINDIR)
 
 fclean : clean
-	rm -rf $(NAME)
+	rm -rf $(NAME) $(BNAME)
 
 re : fclean $(NAME)
+
+bonus : $(BNAME)
 
 $(BINDIR) :
 	mkdir -p $(BINDIR)
 
-.PHONY : all clean fclean re debug valgrind echo
+.PHONY : all clean fclean re debug valgrind echo bonus
+.SECONDARY:

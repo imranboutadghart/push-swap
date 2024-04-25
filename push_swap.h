@@ -6,7 +6,7 @@
 /*   By: iboutadg <iboutadg@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/03 21:08:30 by iboutadg          #+#    #+#             */
-/*   Updated: 2024/03/09 16:02:34 by iboutadg         ###   ########.fr       */
+/*   Updated: 2024/04/24 18:08:50 by iboutadg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,8 @@
 # include <stdlib.h>
 # include <unistd.h>
 # include <limits.h>
+# include <stdint.h>
+
 
 //macros
 # define BUFFER_SIZE 4096
@@ -40,15 +42,18 @@ typedef struct s_stack {
 typedef struct s_head {
 	struct s_stack	*a;
 	struct s_stack	*b;
+	int				size_a;
+	int				size_b;
 }	t_head;
 
+typedef int (*t_instruction)(t_head *head, int print);
+
+void print_stack(t_stack *s);
 // stack_implementation
 t_stack	*create_node(void	*data);
 t_stack	*push(t_stack **stack, void	*data);
 t_stack	*push_back(t_stack **stack, void	*data);
 void	*pop(t_stack **stack);
-void	print_stack(t_stack *stack);
-void	print_stack_cost(t_stack *stack);
 int		stack_size(t_stack *stack);
 int		stack_sorted(t_stack *stack);
 int		stack_sorted_reverse(t_stack *stack);
@@ -58,14 +63,16 @@ void	free_stack(t_stack *s);
 void	*my_malloc(size_t n);
 void	my_free(void *ptr);
 void	free_all(void);
-void	*my_realloc(void *ptr, size_t old_size, size_t new_size);
 
 // utils
+char	*get_next_line(int fd);
 size_t	ft_strlen(const char *s);
 char	*ft_strdup(const char *str);
 char	*ft_strjoin(char *s1, const char *s2);
 int		in_str(char c, char *str);
+int		ft_strncmp(const char *s1, const char *s2, size_t n);
 int		error(void);
+int		ko(void);
 int		my_exit(int exit_code);
 
 //instructions
@@ -88,11 +95,9 @@ int		put_instruction(int instruction);
 t_stack	*parse(int ac, char **av);
 
 //sorting functions
+void	apply_indexes(t_head *head);
 int		sort_3(t_head *head);
-int		push_all_to_a(t_head *head);
-t_stack	*set_cost(t_head *head);
-int		push_least_cost(t_head *head, t_stack *lc);
-int		calculate_position_in_b(t_stack *s, long data);
-int		calculate_position_in_a(t_stack *s, long data);
+int		sort_5(t_head *head);
+int		push_max(t_head *head);
 
 #endif

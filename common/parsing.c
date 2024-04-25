@@ -42,16 +42,16 @@ static int	ft_atoi(const char *str, int index, t_stack	**stack)
 	if (('+' == str[i] || '-' == str[i]) && ('-' == str[i++]))
 			s = -1;
 	if (!str[i])
-		exit(error());
+		return (free_stack(*stack), my_exit(error()));
 	while (str[i] >= '0' && str[i] <= '9')
 	{
 		res = res * 10 + str[i++] - '0';
 		if ((res > 2147483647 && s == 1) || (res > 2147483648 && s == -1))
-			my_exit(error());
+			return (free_stack(*stack), my_exit(error()));
 	}
 	if ((!in_str(str[i], " \t\n\v\f\r") && str[i]) \
 				|| in_stack(*stack, (void *)(res * s)))
-		my_exit(error());
+		return (free_stack(*stack), my_exit(error()));
 	return (push_back(stack, (void *)(res * s)), i);
 }
 
