@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils.c                                            :+:      :+:    :+:   */
+/*   utils1.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: iboutadg <iboutadg@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/03 23:36:15 by iboutadg          #+#    #+#             */
-/*   Updated: 2024/02/04 02:43:12 by iboutadg         ###   ########.fr       */
+/*   Updated: 2024/04/25 22:21:28 by iboutadg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,10 +46,10 @@ char	*ft_strjoin(char *s1, const char *s2)
 	char	*dst;
 
 	if (!s1)
-		return (ft_strdup(s2));
+		return (ft_strjoin(ft_strdup(s2), ""));
 	i = ft_strlen(s1);
 	j = ft_strlen(s2);
-	dst = (char *)my_malloc((i + j + 1) * sizeof(char));
+	dst = (char *)my_malloc((i + j + 2) * sizeof(char));
 	if (!dst)
 		return (0);
 	k = -1;
@@ -58,6 +58,7 @@ char	*ft_strjoin(char *s1, const char *s2)
 	k--;
 	while (++k < i + j)
 		dst[k] = s2[k - i];
+	dst[k++] = ' ';
 	dst[k] = '\0';
 	my_free(s1);
 	return (dst);

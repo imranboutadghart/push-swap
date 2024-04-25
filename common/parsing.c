@@ -6,7 +6,7 @@
 /*   By: iboutadg <iboutadg@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/03 21:08:16 by iboutadg          #+#    #+#             */
-/*   Updated: 2024/03/09 16:46:53 by iboutadg         ###   ########.fr       */
+/*   Updated: 2024/04/25 22:21:53 by iboutadg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ static int	ft_atoi(const char *str, int index, t_stack	**stack)
 		return (i);
 	if (('+' == str[i] || '-' == str[i]) && ('-' == str[i++]))
 			s = -1;
-	if (!str[i])
+	if (!str[i] || in_str(str[i], " \t\n\v\f\r"))
 		return (free_stack(*stack), my_exit(error()));
 	while (str[i] >= '0' && str[i] <= '9')
 	{
@@ -65,9 +65,6 @@ static char	*get_one_big_str(int ac, char **av)
 	while (i < ac)
 	{
 		res = ft_strjoin(res, av[i++]);
-		if (!res)
-			return (0);
-		res = ft_strjoin(res, " ");
 		if (!res)
 			return (0);
 	}

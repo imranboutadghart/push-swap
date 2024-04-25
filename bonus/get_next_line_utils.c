@@ -6,7 +6,7 @@
 /*   By: iboutadg <iboutadg@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/26 18:13:24 by iboutadg          #+#    #+#             */
-/*   Updated: 2023/11/26 19:00:13 by iboutadg         ###   ########.fr       */
+/*   Updated: 2024/04/25 23:20:22 by iboutadg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,8 @@ t_list	*ft_handle_and_free_node(t_list **line, t_list *node, size_t i)
 	while (new_block[i])
 		i++;
 	node->size = i;
-	return (my_free(node->content), node->content = new_block, *line = node, node);
+	return (my_free(node->content),
+		node->content = new_block, *line = node, node);
 }
 
 t_list	*free_line_from_list(t_list **line)

@@ -1,11 +1,24 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   to_array.c                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: iboutadg <iboutadg@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/04/25 23:25:14 by iboutadg          #+#    #+#             */
+/*   Updated: 2024/04/25 23:25:50 by iboutadg         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
-static long	*stack_to_table(t_head *head, int size) {
-	t_stack *tmp;
+static long	*stack_to_table(t_head *head, int size)
+{
+	t_stack	*tmp;
 	long	*tab;
 	int		i;
 
-	tab = malloc(size * sizeof(long));
+	tab = my_malloc(size * sizeof(long));
 	tmp = head->a;
 	i = 0;
 	while (tmp)
@@ -45,7 +58,7 @@ static long	find_data(long *tab, long data, int size)
 	int	i;
 
 	i = 0;
-	while(i < size)
+	while (i < size)
 	{
 		if (tab[i] == data)
 			return (i);
@@ -54,7 +67,7 @@ static long	find_data(long *tab, long data, int size)
 	return (-1);
 }
 
-void apply_indexes(t_head *head)
+void	apply_indexes(t_head *head)
 {
 	long	*tab;
 	int		size;

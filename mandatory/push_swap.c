@@ -1,13 +1,24 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   push_swap.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: iboutadg <iboutadg@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/04/25 23:23:12 by iboutadg          #+#    #+#             */
+/*   Updated: 2024/04/25 23:23:37 by iboutadg         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
-void the_sort(t_head *head)
+void	the_sort(t_head *head)
 {
-	int range;
-	static int value;
+	int			range;
+	static int	value;
 
 	if (!value)
 		value = 4 * ((head->size_a) < 350) + 10 * ((head->size_a) >= 350);
-
 	range = ((head->size_a) / value);
 	if (head->a->data < (void *)(uintptr_t)(head->size_b))
 		push_b(head, 1);
@@ -39,10 +50,11 @@ int	main(int ac, char **av)
 	t_head	head;
 
 	head.b = NULL;
-	head.a = NULL;
 	if (ac > 1)
 	{
 		head.a = parse(ac, av);
+		if (!head.a)
+			my_exit(error());
 		head.size_a = stack_size(head.a);
 		head.size_b = 0;
 		apply_indexes(&head);

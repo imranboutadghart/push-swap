@@ -6,7 +6,7 @@
 /*   By: iboutadg <iboutadg@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/03 21:08:30 by iboutadg          #+#    #+#             */
-/*   Updated: 2024/04/24 18:08:50 by iboutadg         ###   ########.fr       */
+/*   Updated: 2024/04/25 23:09:39 by iboutadg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@
 # include <unistd.h>
 # include <limits.h>
 # include <stdint.h>
-
 
 //macros
 # define BUFFER_SIZE 4096
@@ -46,9 +45,8 @@ typedef struct s_head {
 	int				size_b;
 }	t_head;
 
-typedef int (*t_instruction)(t_head *head, int print);
+typedef int	(*t_instruction)(t_head *head, int print);
 
-void print_stack(t_stack *s);
 // stack_implementation
 t_stack	*create_node(void	*data);
 t_stack	*push(t_stack **stack, void	*data);
