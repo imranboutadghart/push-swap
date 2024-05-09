@@ -6,7 +6,7 @@
 /*   By: iboutadg <iboutadg@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/25 23:25:14 by iboutadg          #+#    #+#             */
-/*   Updated: 2024/04/25 23:25:50 by iboutadg         ###   ########.fr       */
+/*   Updated: 2024/04/28 19:20:12 by iboutadg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,10 +71,8 @@ void	apply_indexes(t_head *head)
 {
 	long	*tab;
 	int		size;
-	int		i;
 	t_stack	*tmp;
 
-	i = 0;
 	size = head->size_a;
 	tab = stack_to_table(head, size);
 	tmp = head->a;

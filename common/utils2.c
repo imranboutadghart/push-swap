@@ -18,12 +18,6 @@ int	error(void)
 	return (1);
 }
 
-int	ko(void)
-{
-	write(1, "KO\n", 3);
-	return (0);
-}
-
 int	my_exit(int exit_code)
 {
 	free_all();

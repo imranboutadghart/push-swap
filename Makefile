@@ -1,5 +1,5 @@
 CC:=cc
-CFLAGS:= -Wextra -Wall -Werror -I.# -O3
+CFLAGS:= -Wextra -Wall -I. #-Werror
 NAME:= push_swap
 BNAME:= checker
 

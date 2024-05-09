@@ -6,7 +6,7 @@
 /*   By: iboutadg <iboutadg@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/25 23:23:12 by iboutadg          #+#    #+#             */
-/*   Updated: 2024/04/25 23:23:37 by iboutadg         ###   ########.fr       */
+/*   Updated: 2024/04/28 19:28:01 by iboutadg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,17 +49,16 @@ int	main(int ac, char **av)
 {
 	t_head	head;
 
+	if (ac < 2)
+		return (0);
 	head.b = NULL;
-	if (ac > 1)
-	{
-		head.a = parse(ac, av);
-		if (!head.a)
-			my_exit(error());
-		head.size_a = stack_size(head.a);
-		head.size_b = 0;
-		apply_indexes(&head);
-		push_swap(&head);
-	}
+	head.a = parse(ac, av);
+	if (!head.a)
+		my_exit(error());
+	head.size_a = stack_size(head.a);
+	head.size_b = 0;
+	apply_indexes(&head);
+	push_swap(&head);
 	free_stack(head.a);
 	free_stack(head.b);
 	put_instruction(0);

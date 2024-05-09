@@ -6,7 +6,7 @@
 /*   By: iboutadg <iboutadg@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/25 23:09:58 by iboutadg          #+#    #+#             */
-/*   Updated: 2024/04/25 23:19:28 by iboutadg         ###   ########.fr       */
+/*   Updated: 2024/04/26 17:07:36 by iboutadg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,15 +44,15 @@ int	get_instruction(t_head *head, char *s)
 
 int	main(int ac, char **av)
 {
-	t_head	head;
-	char	*line;
+	static t_head	head = {NULL, NULL, 0, 0};
+	char			*line;
 
 	if (ac <= 1)
 		return (0);
-	head.b = NULL;
 	head.a = parse(ac, av);
+	if (!head.a)
+		my_exit(error());
 	head.size_a = stack_size(head.a);
-	head.size_b = 0;
 	line = get_next_line(STDIN_FILENO);
 	while (line)
 	{
@@ -63,7 +63,7 @@ int	main(int ac, char **av)
 	if (stack_sorted(head.a) && !head.b)
 		write(1, "OK\n", 3);
 	else
-		ko();
+		write(1, "KO\n", 3);
 	free_stack(head.a);
 	free_stack(head.b);
 	free_all();

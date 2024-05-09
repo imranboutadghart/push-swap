@@ -70,7 +70,6 @@ char	*ft_strjoin(char *s1, const char *s2);
 int		in_str(char c, char *str);
 int		ft_strncmp(const char *s1, const char *s2, size_t n);
 int		error(void);
-int		ko(void);
 int		my_exit(int exit_code);
 
 //instructions

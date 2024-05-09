@@ -6,7 +6,7 @@
 /*   By: iboutadg <iboutadg@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/09 15:51:27 by iboutadg          #+#    #+#             */
-/*   Updated: 2024/04/25 23:19:55 by iboutadg         ###   ########.fr       */
+/*   Updated: 2024/04/26 16:45:18 by iboutadg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,8 @@ int	stack_sorted_reverse(t_stack *stack)
 
 int	stack_sorted(t_stack *stack)
 {
+	if (!stack)
+		return (1);
 	while (stack->next)
 	{
 		if ((long)stack->data > (long)stack->next->data)

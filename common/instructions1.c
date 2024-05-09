@@ -6,7 +6,7 @@
 /*   By: iboutadg <iboutadg@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/06 16:47:19 by iboutadg          #+#    #+#             */
-/*   Updated: 2024/03/09 15:54:16 by iboutadg         ###   ########.fr       */
+/*   Updated: 2024/04/26 16:12:35 by iboutadg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,6 @@ int	rotate_a(t_head *head, int print)
 	t_stack	*tmp;
 	t_stack	*tmp2;
 
-	if (!head->a)
-		my_exit(ko());
 	if ((head->size_a) <= 2)
 	{
 		if ((head->size_a) <= 1 || swap_a(head, 0))
@@ -46,8 +44,6 @@ int	rotate_b(t_head *head, int print)
 	t_stack	*tmp;
 	t_stack	*tmp2;
 
-	if (!head->b)
-		my_exit(ko());
 	if ((head->size_b) <= 2)
 	{
 		if ((head->size_b) <= 1 || swap_b(head, 0))
@@ -74,8 +70,6 @@ int	r_rotate_a(t_head *head, int print)
 {
 	t_stack	*tmp;
 
-	if (!head->a)
-		my_exit(ko());
 	if ((head->size_a) <= 2)
 	{
 		if ((head->size_a) <= 1 || swap_a(head, 0))
@@ -99,8 +93,6 @@ int	r_rotate_b(t_head *head, int print)
 {
 	t_stack	*tmp;
 
-	if (!head->b)
-		my_exit(ko());
 	if ((head->size_b) <= 2)
 	{
 		if ((head->size_b) <= 1 || swap_b(head, 0))
