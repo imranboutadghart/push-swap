@@ -35,13 +35,13 @@ static int	ft_atoi(const char *str, int index, t_stack	**stack)
 	i = index;
 	s = 1;
 	res = 0;
-	while (in_str(str[i], " \t\n\v\f\r"))
+	while (in_str(str[i], " "))
 		i++;
 	if (!str[i])
 		return (i);
 	if (('+' == str[i] || '-' == str[i]) && ('-' == str[i++]))
 			s = -1;
-	if (!str[i] || in_str(str[i], " \t\n\v\f\r"))
+	if (!str[i] || in_str(str[i], " "))
 		return (free_stack(*stack), my_exit(error()));
 	while (str[i] >= '0' && str[i] <= '9')
 	{
@@ -49,7 +49,7 @@ static int	ft_atoi(const char *str, int index, t_stack	**stack)
 		if ((res > 2147483647 && s == 1) || (res > 2147483648 && s == -1))
 			return (free_stack(*stack), my_exit(error()));
 	}
-	if ((!in_str(str[i], " \t\n\v\f\r") && str[i]) \
+	if ((!in_str(str[i], " ") && str[i]) \
 				|| in_stack(*stack, (void *)(res * s)))
 		return (free_stack(*stack), my_exit(error()));
 	return (push_back(stack, (void *)(res * s)), i);
