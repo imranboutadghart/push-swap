@@ -60,3 +60,12 @@ void	free_stack(t_stack *s)
 		s = tmp;
 	}
 }
+
+t_stack	*get_last(t_stack *s)
+{
+	if (!s)
+		return (NULL);
+	while (s->next)
+		s = s->next;
+	return (s);
+}

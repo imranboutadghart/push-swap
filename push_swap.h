@@ -56,6 +56,7 @@ int		stack_size(t_stack *stack);
 int		stack_sorted(t_stack *stack);
 int		stack_sorted_reverse(t_stack *stack);
 void	free_stack(t_stack *s);
+t_stack	*get_last(t_stack *s);
 
 // malloc and free implementations
 void	*my_malloc(size_t n);

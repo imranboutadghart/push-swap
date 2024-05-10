@@ -14,19 +14,21 @@
 
 void	the_sort(t_head *head)
 {
-	int			range;
+	int			r;
 	static int	value;
 
 	if (!value)
 		value = 4 * ((head->size_a) < 350) + 10 * ((head->size_a) >= 350);
-	range = ((head->size_a) / value);
+	r = ((head->size_a) / value);
 	if (head->a->data < (void *)(uintptr_t)(head->size_b))
 		push_b(head, 1);
-	else if (head->a->data <= (void *)(uintptr_t)(head->size_b) + range)
+	else if (head->a->data <= (void *)(uintptr_t)(head->size_b) + r)
 	{
 		push_b(head, 1);
 		rotate_b(head, 1);
 	}
+	else if (get_last(head->a)->data <= (void *)(uintptr_t)(head->size_b) + r)
+		r_rotate_a(head, 1);
 	else
 		rotate_a(head, 1);
 }
