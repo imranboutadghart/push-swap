@@ -55,6 +55,20 @@ static int	ft_atoi(const char *str, int index, t_stack	**stack)
 	return (push_back(stack, (void *)(res * s)), i);
 }
 
+static int	empty_string(char *str)
+{
+	int	i;
+
+	i = 0;
+	while (str[i])
+	{
+		if (!in_str(str[i], " "))
+			return (0);
+		i++;
+	}
+	return (1);
+}
+
 static char	*get_one_big_str(int ac, char **av)
 {
 	int		i;
@@ -64,6 +78,8 @@ static char	*get_one_big_str(int ac, char **av)
 	i = 1;
 	while (i < ac)
 	{
+		if (empty_string(av[i]))
+			return (0);
 		res = ft_strjoin(res, av[i++]);
 		if (!res)
 			return (0);
