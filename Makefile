@@ -15,7 +15,7 @@ COMMONSRC:= instructions1.c instructions2.c instructions3.c utils1.c utils2.c\
 			free.c malloc.c
 MSRC:=	to_array.c clear_b.c \
 		sort_3_5.c push_swap.c
-BSRC:= checker.c get_next_line.c get_next_line_utils.c
+BSRC:= checker_bonus.c get_next_line_bonus.c get_next_line_utils_bonus.c
 MOBJ:=$(patsubst %.c, $(BINDIR)/%.o,$(MSRC) $(COMMONSRC))
 BOBJ:=$(patsubst %.c, $(BINDIR)/%.o,$(BSRC) $(COMMONSRC))
 vpath %.c $(MANDIR) $(BONDIR) $(COMMONDIR)
