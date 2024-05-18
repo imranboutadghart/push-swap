@@ -80,7 +80,7 @@ static char	*get_one_big_str(int ac, char **av)
 	{
 		if (empty_string(av[i]))
 		{
-			free(res);
+			my_free(res);
 			return (0);
 		}
 		res = ft_strjoin(res, av[i++]);
