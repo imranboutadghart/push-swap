@@ -35,7 +35,6 @@
 typedef struct s_stack {
 	void			*data;
 	struct s_stack	*next;
-	int				cost;
 }	t_stack;
 
 typedef struct s_head {
