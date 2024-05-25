@@ -10,8 +10,8 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GET_NEXT_LINE_H
-# define GET_NEXT_LINE_H
+#ifndef GET_NEXT_LINE_BONUS_H
+# define GET_NEXT_LINE_BONUS_H
 
 # include <string.h>
 # include <stdlib.h>
@@ -38,4 +38,4 @@ t_list	*free_line_from_list(t_list **list);
 void	*my_malloc(size_t n);
 void	my_free(void *ptr);
 
-#endif /* GET_NEXT_LINE_H */
+#endif /* GET_NEXT_LINE_BONUS_H */
